@@ -25,7 +25,7 @@ public class Root{//class
                 }
             
             }
-            double middle=(low+high)/2;
+            double middle=(low+high)/2;//reintroducing middle
             System.out.println("The root is "+middle);//Final answer
             
     }

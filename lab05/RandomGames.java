@@ -11,7 +11,7 @@ public class RandomGames{
         gameScanner=new Scanner(System.in);
         //using the scanner
         System.out.print("I want to play a game. Enter R or r for roulette, C or c for craps, or P or p for pick a card.");
-            if (gameScanner.hasNext().CharAt(0)){
+            if (gameScanner.hasNext().charAt(0)){
                 if (gameScanner.next().length!=0){
                     System.out.println("Please enter only 1 character.");
                     return;

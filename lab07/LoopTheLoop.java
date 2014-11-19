@@ -10,14 +10,18 @@ public class LoopTheLoop{//class
         int d=1;
         while (c<=nStars){
             System.out.print("*");
-            
-            while(d<=nStars){
-                System.out.println("*");
-                System.out.print("*");
-                d++;
-            } 
-            c++;
+            c++
         }
+        while (c<=nStars){
+            for (d=1;d<=c;d++){
+                System.out.print("*");
+                }
+            c++;
+            System.out.println();
+            
+        } 
+            
+        
         
     }
 }

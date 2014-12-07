@@ -14,14 +14,17 @@ public class MethodCalls{
         System.out.println("Join -9 and -90 to get "+join(-9,-90));
     }
     public static int addDigit(int x,int y){
-       
-        String z=String.valueOf(x)
-        String w=(z+y);
-        int b=parseInt(w);
+       if(x<0){
+           x=-x;
+           y=-y;
+       }
+        String z=String.valueOf(x);
+        String w=y+z;
+        int b=Integer.parseInt(w);
         return b;
     }
     public static int join(int x,int y){
-        return addDigit(x,y);
+        return addDigit(y,x);
     }
 }  
 /*

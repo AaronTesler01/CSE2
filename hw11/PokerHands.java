@@ -5,8 +5,8 @@ public class PokerHands {
     public static void main(String arg[]) {
         Scanner response;
         response = new Scanner(System.in);
-        char truth='y';
-        while (truth =='y' || truth =='Y') {
+        char truth='y';//establish the character
+        while (truth =='y' || truth =='Y') {//set up the loops
             System.out.println("I want to play a game. Do you?");
             String answer = response.next();
              
@@ -19,33 +19,33 @@ public class PokerHands {
                  break;
              }
         
-            int[] hand = new int[5];
-            int[] deck = new int[52];
+            int[] hand = new int[5];//makes the hand
+            int[] deck = new int[52];//makes the deck
             int[] freq = new int[5]; //refers to frequency of 0,1,2, in rankings
-            int[] suitrank = new int[4];
+            int[] suitrank = new int[4];//array which calculates the frequency of suits
             for (int w = 0; w < 52; w++) {
-                deck[w] = w;
+                deck[w] = w;//intialize the deck
             }
-            int[] rankings = new int[13];
+            int[] rankings = new int[13];// refers to frequency of A,K,Q in hand
             for (int d = 0; d < 13; d++) {
-                rankings[d] = 0;
+                rankings[d] = 0;//intialize the # of rankings
             }
             for (int t = 0; t < 4; t++) {
-                suitrank[t] = 0;
+                suitrank[t] = 0;//initialize the # of cards in suits
             }
-            for (int z = 0; z < 5; z++) {
+            for (int z = 0; z < 5; z++) {//intialize freq
                 freq[z] = 0;
             }
             int n; //intialized
             int m; //initialized
 
-            for (int b = 0; b < 5; b++) {
+            for (int b = 0; b < 5; b++) {//making the hand
                 System.out.println("Enter a suit: c, d, h, or s. No capital letters.");
                 String z = response.next();
                 if (z.length() != 1) {
                     System.out.println("You did not enter a valid answer. The next ranks will not count.");
-                    b--;
-                    continue;
+                    b--;//making sure that there is no mistake
+                    continue;//continues loop back to here
                 }
                 char user = z.charAt(0);
                 if (user == 'c') {
@@ -67,7 +67,7 @@ public class PokerHands {
                 else {
                     System.out.println("This is not a valid suit.");
                     b--;
-                    n=-1;
+                    continue;
                 }
 
 
@@ -119,7 +119,7 @@ public class PokerHands {
                         continue;
                 }
                 hand[b] = deck[(n * 13) + m]; //calling numbers in deck
-                for (int q = b - 1; q >= 0; q--) {
+                for (int q = b - 1; q >= 0; q--) {//check duplicat4es
                     if (hand[q] == hand[b]) {
                         System.out.println("You have a duplicate card.");
                         b--;
@@ -149,7 +149,7 @@ public class PokerHands {
                 }
             }
             showOneHand(hand);
-            if ((freq[0] == 11) && (freq[1] == 1)) {
+            if ((freq[0] == 11) && (freq[1] == 1)) {//analyzing hand with easier cases first in regards to freq
                 System.out.println("This is a Four of a Kind.");
             }
             else if (freq[0] == 11 && freq[1] == 0) {
@@ -168,7 +168,7 @@ public class PokerHands {
                 System.out.println("This is a flush.");
             }
             else if (royaltest(rankings) == true && suittest(suitrank) == true) {
-                System.out.println("Congratulations! You have a Royal Flush!");
+                System.out.println("Congratulations! You have a Royal Flush!");//deserves to be special
             }
             else if (straighttest(rankings) == true && suittest(suitrank) == true) {
                 System.out.println("This is a Straight Flush.");
@@ -179,9 +179,8 @@ public class PokerHands {
             }
         }
     }
-    public static boolean straighttest(int[] rankings) {
+    public static boolean straighttest(int[] rankings) {//test for straight
         for (int x = 0; x < 9; x++) {
-            System.out.println(rankings[x]);
             if (rankings[x] == 1) {
                 for (int u = x; u < x + 4; u++) {
                     if (rankings[u] != 1) {
@@ -192,7 +191,7 @@ public class PokerHands {
         }
         return true;
     }
-    public static boolean royaltest(int[] rankings) {
+    public static boolean royaltest(int[] rankings) {//test for royal flush
         for (int x = 0; x < 5; x++) {
             if (rankings[x] == 1) {
 
@@ -204,9 +203,8 @@ public class PokerHands {
         }
         return true;
     }
-    public static boolean suittest(int[] suitrank) {
+    public static boolean suittest(int[] suitrank) {//test for flush
         for (int s = 0; s < 4; s++) {
-            System.out.println(suitrank[s]);
             if (suitrank[s] >= 5) {
                 return true;
             }
